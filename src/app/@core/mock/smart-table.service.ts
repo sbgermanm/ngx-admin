@@ -10,21 +10,21 @@ export class SmartTableService extends SmartTableData {
     lastName: 'Otto',
     username: '@mdo',
     email: 'mdo@gmail.com',
-    age: '28',
+    age: '28'
   }, {
     id: 2,
     firstName: 'Jacob',
     lastName: 'Thornton',
     username: '@fat',
     email: 'fat@yandex.ru',
-    age: '45',
+    age: '45'
   }, {
     id: 3,
     firstName: 'Larry',
     lastName: 'Bird',
     username: '@twitter',
     email: 'twitter@outlook.com',
-    age: '18',
+    age: '18'
   }, {
     id: 4,
     firstName: 'John',
@@ -430,7 +430,7 @@ export class SmartTableService extends SmartTableData {
     return this.data;
   }
 
-  getFoos(){
+  getFoos() {
    return null;
   }
 }
