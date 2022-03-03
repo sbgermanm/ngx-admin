@@ -17,7 +17,7 @@ export class SmartTableService extends SmartTableData {
     fooList: this.foossList
   };
 
-  getData(){
+  getData() {
     const data = [{
           id: 1,
           name: 'Mark'}];
@@ -31,10 +31,10 @@ export class SmartTableService extends SmartTableData {
   };
 
   constructor(
-    private http: HttpClient) { super();}
+    private http: HttpClient) { super(); }
 
   getFoos(): Observable<Response> {
-    this.log("getfoos")
+    this.log('getfoos');
     return this.http.get<Response>(this.url)
       .pipe(
         tap(_ => this.log('fetched foos')),
@@ -64,7 +64,7 @@ export class SmartTableService extends SmartTableData {
 
   /** Log a HeroService message with the MessageService */
   private log(message: string) {
-    console.log(message); // log to console instead
+//     console.log(message); // log to console instead
 
   }
 
