@@ -8,7 +8,7 @@ import { SmartTableData } from '../../../@core/data/smart-table';
   templateUrl: './smart-table.component.html',
   styleUrls: ['./smart-table.component.scss'],
 })
-export class SmartTableComponent implements OnInit{
+export class SmartTableComponent implements OnInit {
 
   settings = {
     add: {
