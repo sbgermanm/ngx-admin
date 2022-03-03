@@ -429,4 +429,8 @@ export class SmartTableService extends SmartTableData {
   getData() {
     return this.data;
   }
+
+  getFoos(){
+   return null;
+  }
 }

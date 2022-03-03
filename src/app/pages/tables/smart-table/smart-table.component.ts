@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
 
 import { SmartTableData } from '../../../@core/data/smart-table';
@@ -8,7 +8,7 @@ import { SmartTableData } from '../../../@core/data/smart-table';
   templateUrl: './smart-table.component.html',
   styleUrls: ['./smart-table.component.scss'],
 })
-export class SmartTableComponent {
+export class SmartTableComponent implements OnInit{
 
   settings = {
     add: {
@@ -30,8 +30,8 @@ export class SmartTableComponent {
         title: 'ID',
         type: 'number',
       },
-      firstName: {
-        title: 'First Name',
+      name: {
+        title: 'Name',
         type: 'string',
       },
       lastName: {
@@ -55,10 +55,20 @@ export class SmartTableComponent {
 
   source: LocalDataSource = new LocalDataSource();
 
+  data = [{
+        id: 1,
+        name: 'Mark'}];
+
   constructor(private service: SmartTableData) {
-    const data = this.service.getData();
-    this.source.load(data);
   }
+
+  ngOnInit(): void {
+    this.service.getFoos().subscribe(resp => {
+              this.data = resp.fooList;
+              this.source.load(this.data);
+          });
+  }
+
 
   onDeleteConfirm(event): void {
     if (window.confirm('Are you sure you want to delete?')) {

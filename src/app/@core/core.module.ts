@@ -34,7 +34,8 @@ import { SecurityCamerasData } from './data/security-cameras';
 
 import { UserService } from './mock/users.service';
 import { ElectricityService } from './mock/electricity.service';
-import { SmartTableService } from './mock/smart-table.service';
+// import { SmartTableService } from './mock/smart-table.service';
+import { SmartTableService } from './sebas/smart-table.service';
 import { UserActivityService } from './mock/user-activity.service';
 import { OrdersChartService } from './mock/orders-chart.service';
 import { ProfitChartService } from './mock/profit-chart.service';
