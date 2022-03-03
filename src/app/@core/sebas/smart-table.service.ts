@@ -14,7 +14,7 @@ export class SmartTableService extends SmartTableData {
   foossList: Foo[] = [];
 
  response: Response = {
-    fooList: this.foossList
+    fooList: this.foossList,
   };
 
   getData() {
@@ -27,7 +27,7 @@ export class SmartTableService extends SmartTableData {
   private url = 'http://localhost:8081/rest-server/api/foos';  // URL to web api
 
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
 
   constructor(
@@ -38,7 +38,7 @@ export class SmartTableService extends SmartTableData {
     return this.http.get<Response>(this.url)
       .pipe(
         tap(_ => this.log('fetched foos')),
-        catchError(this.handleError<Response>('getfoos', this.response))
+        catchError(this.handleError<Response>('getfoos', this.response)),
       );
   }
 
