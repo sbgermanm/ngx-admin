@@ -15,6 +15,7 @@ import { DashboardComponent } from './dashboard.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { SmartTableComponent } from './smart-table/smart-table.component';
 import { ContactsComponent } from './contacts/contacts.component';
+import { TablesModule } from '../tables/tables.module';
 
 @NgModule({
   imports: [
@@ -30,6 +31,7 @@ import { ContactsComponent } from './contacts/contacts.component';
     NbSelectModule,
     NbListModule,
     NbIconModule,
+    TablesModule,
   ],
   declarations: [
     DashboardComponent,
