@@ -8,6 +8,30 @@ export const MENU_ITEMS: NbMenuItem[] = [
     home: true,
   },
   {
+    title: 'Smart Table',
+    icon: 'home-outline',
+    link: '/pages/tables/smart-table',
+  },
+  {
+    title: 'Tree Grid',
+    icon: 'home-outline',
+    link: '/pages/tables/tree-grid',
+  },
+  {
+    title: 'Tables & Data',
+    icon: 'grid-outline',
+    children: [
+      {
+        title: 'Smart Table',
+        link: '/pages/tables/smart-table',
+      },
+      {
+        title: 'Tree Grid',
+        link: '/pages/tables/tree-grid',
+      },
+    ],
+  },
+  {
     title: 'FEATURES',
     group: true,
   },

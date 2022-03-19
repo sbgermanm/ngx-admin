@@ -13,10 +13,16 @@ const routes: Routes = [{
       component: DashboardComponent,
     },
     {
+      path: 'tables',
+      loadChildren: () => import('./tables/tables.module')
+        .then(m => m.TablesModule),
+    },
+    {
       path: '',
       redirectTo: 'dashboard',
       pathMatch: 'full',
     },
+
   ],
 }];
 
