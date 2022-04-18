@@ -5,10 +5,17 @@ import { NbSecurityModule, NbRoleProvider } from '@nebular/security';
 import { of as observableOf } from 'rxjs';
 
 import { throwIfAlreadyLoaded } from './module-import-guard';
-import { AnalyticsService, SeoService } from './utils';
 import { UserData } from './data/users';
 import { UserService } from './mock/users.service';
 import { MockDataModule } from './mock/mock-data.module';
+import { CountryOrderData } from './data/country-order';
+import { CountryOrderService } from './mock/country-order.service';
+
+import {
+  AnalyticsService,
+  LayoutService,
+  SeoService,
+} from './utils';
 
 const socialLinks = [
   {
@@ -30,6 +37,8 @@ const socialLinks = [
 
 const DATA_SERVICES = [
   { provide: UserData, useClass: UserService },
+  { provide: CountryOrderData, useClass: CountryOrderService },
+
 ];
 
 export class NbSimpleRoleProvider extends NbRoleProvider {
@@ -78,6 +87,7 @@ export const NB_CORE_PROVIDERS = [
     provide: NbRoleProvider, useClass: NbSimpleRoleProvider,
   },
   AnalyticsService,
+  LayoutService,
   SeoService,
 ];
 

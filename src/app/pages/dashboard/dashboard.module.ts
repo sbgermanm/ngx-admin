@@ -26,6 +26,7 @@ import { CountryOrdersMapComponent } from '../../components/country-orders/map/c
 import { CountryOrdersMapService } from '../../components/country-orders/map/country-orders-map.service';
 import { CountryOrdersChartComponent } from '../../components/country-orders/chart/country-orders-chart.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { ChartModule } from 'angular2-chartjs';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
     NgxEchartsModule,
     NgxChartsModule,
     LeafletModule,
+    ChartModule,
   ],
   declarations: [
     DashboardComponent,
