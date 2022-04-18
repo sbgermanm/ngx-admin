@@ -10,12 +10,23 @@ import {
   NbListModule,
   NbIconModule,
 } from '@nebular/theme';
+
+import { NgxEchartsModule } from 'ngx-echarts';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+
 import { ThemeModule } from '../../@theme/theme.module';
 import { DashboardComponent } from './dashboard.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { SmartTableComponent } from './smart-table/smart-table.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { TablesModule } from '../tables/tables.module';
+
+import { CountryOrdersComponent } from '../../components/country-orders/country-orders.component';
+import { CountryOrdersMapComponent } from '../../components/country-orders/map/country-orders-map.component';
+import { CountryOrdersMapService } from '../../components/country-orders/map/country-orders-map.service';
+import { CountryOrdersChartComponent } from '../../components/country-orders/chart/country-orders-chart.component';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+
 
 @NgModule({
   imports: [
@@ -32,11 +43,20 @@ import { TablesModule } from '../tables/tables.module';
     NbListModule,
     NbIconModule,
     TablesModule,
+    NgxEchartsModule,
+    NgxChartsModule,
+    LeafletModule,
   ],
   declarations: [
     DashboardComponent,
     SmartTableComponent,
     ContactsComponent,
+    CountryOrdersComponent,
+    CountryOrdersMapComponent,
+    CountryOrdersChartComponent,
+  ],
+  providers: [
+    CountryOrdersMapService,
   ],
 })
 export class DashboardModule { }
