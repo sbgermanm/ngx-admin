@@ -11,6 +11,10 @@ import { MockDataModule } from './mock/mock-data.module';
 import { CountryOrderData } from './data/country-order';
 import { CountryOrderService } from './mock/country-order.service';
 
+import { SmartTableData } from './data/smart-table';
+import { SmartTableService } from './sebas/smart-table.service';
+
+
 import {
   AnalyticsService,
   LayoutService,
@@ -38,6 +42,7 @@ const socialLinks = [
 const DATA_SERVICES = [
   { provide: UserData, useClass: UserService },
   { provide: CountryOrderData, useClass: CountryOrderService },
+  { provide: SmartTableData, useClass: SmartTableService },
 
 ];
 

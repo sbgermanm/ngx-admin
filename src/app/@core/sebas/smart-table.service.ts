@@ -24,7 +24,7 @@ export class SmartTableService extends SmartTableData {
     return data;
   }
 
-  private url = 'http://localhost:8888/rest-server/api/foos';  // URL to web api
+  private url = 'http://localhost:8081/rest-server/api/foos';  // URL to web api
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),

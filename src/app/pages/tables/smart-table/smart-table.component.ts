@@ -30,25 +30,21 @@ export class SmartTableComponent implements OnInit {
         title: 'ID',
         type: 'number',
       },
-      name: {
-        title: 'Name',
+      firstName: {
+        title: 'First Name',
         type: 'string',
       },
       lastName: {
         title: 'Last Name',
         type: 'string',
       },
-      username: {
-        title: 'Username',
+      phone: {
+        title: 'Phone',
         type: 'string',
       },
       email: {
         title: 'E-mail',
         type: 'string',
-      },
-      age: {
-        title: 'Age',
-        type: 'number',
       },
     },
   };
