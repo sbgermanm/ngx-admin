@@ -15,11 +15,13 @@ export class SmartTableComponent implements OnInit {
       addButtonContent: '<i class="nb-plus"></i>',
       createButtonContent: '<i class="nb-checkmark"></i>',
       cancelButtonContent: '<i class="nb-close"></i>',
+      confirmCreate:true,
     },
     edit: {
       editButtonContent: '<i class="nb-edit"></i>',
       saveButtonContent: '<i class="nb-checkmark"></i>',
       cancelButtonContent: '<i class="nb-close"></i>',
+      confirmSave: true,
     },
     delete: {
       deleteButtonContent: '<i class="nb-trash"></i>',
@@ -72,6 +74,22 @@ export class SmartTableComponent implements OnInit {
 
   onDeleteConfirm(event): void {
     if (window.confirm('Are you sure you want to delete?')) {
+      event.confirm.resolve();
+    } else {
+      event.confirm.reject();
+    }
+  }
+
+  onCreateConfirm(event):void { 
+    if (window.confirm('Are you sure you want to create?')) {
+      event.confirm.resolve();
+    } else {
+      event.confirm.reject();
+    }
+  } 
+  
+  onSaveConfirm(event):void {
+    if (window.confirm('Are you sure you want to save?')) {
       event.confirm.resolve();
     } else {
       event.confirm.reject();

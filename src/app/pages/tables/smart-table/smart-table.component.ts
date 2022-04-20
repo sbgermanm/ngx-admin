@@ -15,11 +15,15 @@ export class SmartTableComponent implements OnInit {
       addButtonContent: '<i class="nb-plus"></i>',
       createButtonContent: '<i class="nb-checkmark"></i>',
       cancelButtonContent: '<i class="nb-close"></i>',
+      confirmCreate:true,
+      editable: false,
+      addable: false,
     },
     edit: {
       editButtonContent: '<i class="nb-edit"></i>',
       saveButtonContent: '<i class="nb-checkmark"></i>',
       cancelButtonContent: '<i class="nb-close"></i>',
+      confirmSave: true,
     },
     delete: {
       deleteButtonContent: '<i class="nb-trash"></i>',
@@ -29,6 +33,8 @@ export class SmartTableComponent implements OnInit {
       id: {
         title: 'ID',
         type: 'number',
+        editable: false,
+        addable: false,  
       },
       firstName: {
         title: 'First Name',
@@ -67,10 +73,41 @@ export class SmartTableComponent implements OnInit {
 
 
   onDeleteConfirm(event): void {
+    
     if (window.confirm('Are you sure you want to delete?')) {
       event.confirm.resolve();
     } else {
       event.confirm.reject();
     }
   }
+
+  onCreateConfirm(event):void { 
+    if (window.confirm('Are you sure you want to create?')) {
+      this.service.postFoos(event.newData).subscribe(
+        response => {
+        this.log("response: " + response);
+        event.confirm.resolve();
+      },
+      error =>{
+        this.log("error: " + error);
+        event.confirm.reject();
+      })
+    } else {
+      event.confirm.reject();
+    }
+  } 
+  
+  onSaveConfirm(event):void {
+    if (window.confirm('Are you sure you want to save?')) {
+      event.confirm.resolve();
+    } else {
+      event.confirm.reject();
+    }
+  }
+
+    /** Log a HeroService message with the MessageService */
+    private log(message: string) {
+          console.log(message); // log to console instead
+      
+    }
 }
