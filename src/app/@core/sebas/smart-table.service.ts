@@ -11,8 +11,6 @@ import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable()
 export class SmartTableService extends SmartTableData {
-
-  
   foossList: Foo[] = [];
 
  response: Response = {
@@ -37,24 +35,22 @@ export class SmartTableService extends SmartTableData {
 
   getFoos(): Observable<Response> {
     this.log('getfoos');
-    return this.http.get<Response>(this.url)
-      .pipe(
-        tap(_ => this.log('fetched foos')),
-        catchError(this.handleError<Response>('getfoos', this.response)),
-      );
+    return this.http.get<Response>(this.url);
+      // .pipe(
+      //   tap(_ => this.log('fetched foos')),
+      //   catchError(this.handleError<Response>('getfoos', this.response)),
+      // );
   }
 
 
   postFoos(data: Object): Observable<any> {
     this.log('saving: ' + data);
-    return this.http.post(`${this.url}`, data)
-      .pipe(
-        tap(_ => this.log('saved foos')),
-        catchError(this.handleError<Response>('saveFoos', this.response)),
-      );
+    return this.http.post(`${this.url}`, data);
+      // .pipe(
+      //   tap(_ => this.log('saved foos')),
+      //   catchError(this.handleError<any>('saveFoos', this.response)),
+      // );
   }
-  
-
  /**
    * Handle Http operation that failed.
    * Let the app continue.
@@ -77,8 +73,6 @@ export class SmartTableService extends SmartTableData {
 
   /** Log a HeroService message with the MessageService */
   private log(message: string) {
-    console.log(message); // log to console instead
-
+    // console.log(message); // log to console instead
   }
-
 }

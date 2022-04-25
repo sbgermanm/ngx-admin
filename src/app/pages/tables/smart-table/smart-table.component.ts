@@ -15,7 +15,7 @@ export class SmartTableComponent implements OnInit {
       addButtonContent: '<i class="nb-plus"></i>',
       createButtonContent: '<i class="nb-checkmark"></i>',
       cancelButtonContent: '<i class="nb-close"></i>',
-      confirmCreate:true,
+      confirmCreate: true,
       editable: false,
       addable: false,
     },
@@ -34,7 +34,7 @@ export class SmartTableComponent implements OnInit {
         title: 'ID',
         type: 'number',
         editable: false,
-        addable: false,  
+        addable: false,
       },
       firstName: {
         title: 'First Name',
@@ -68,12 +68,14 @@ export class SmartTableComponent implements OnInit {
     this.service.getFoos().subscribe(resp => {
               this.data = resp.fooList;
               this.source.load(this.data);
+          },
+          error => {
+            window.confirm('Error on loading foos');
           });
   }
 
 
   onDeleteConfirm(event): void {
-    
     if (window.confirm('Are you sure you want to delete?')) {
       event.confirm.resolve();
     } else {
@@ -81,23 +83,24 @@ export class SmartTableComponent implements OnInit {
     }
   }
 
-  onCreateConfirm(event):void { 
+  onCreateConfirm(event): void {
     if (window.confirm('Are you sure you want to create?')) {
       this.service.postFoos(event.newData).subscribe(
         response => {
-        this.log("response: " + response);
+        this.log('response: ' + response);
         event.confirm.resolve();
       },
-      error =>{
-        this.log("error: " + error);
+      error => {
+        window.confirm('Error saving foos')
+        this.log('error: ' + error);
         event.confirm.reject();
-      })
+      });
     } else {
       event.confirm.reject();
     }
-  } 
-  
-  onSaveConfirm(event):void {
+  }
+
+  onSaveConfirm(event): void {
     if (window.confirm('Are you sure you want to save?')) {
       event.confirm.resolve();
     } else {
@@ -107,7 +110,6 @@ export class SmartTableComponent implements OnInit {
 
     /** Log a HeroService message with the MessageService */
     private log(message: string) {
-          console.log(message); // log to console instead
-      
+          // console.log(message); // log to console instead
     }
 }
