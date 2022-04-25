@@ -71,12 +71,14 @@ export class SmartTableComponent implements OnInit {
           },
           error => {
             window.confirm('Error on loading foos');
-          });
+          }
+    );
   }
 
 
   onDeleteConfirm(event): void {
     if (window.confirm('Are you sure you want to delete?')) {
+      this.service.deleteFoos(event)
       event.confirm.resolve();
     } else {
       event.confirm.reject();
@@ -89,9 +91,10 @@ export class SmartTableComponent implements OnInit {
         response => {
         this.log('response: ' + response);
         event.confirm.resolve();
+
       },
       error => {
-        window.confirm('Error saving foos')
+        window.confirm('Error saving foos');
         this.log('error: ' + error);
         event.confirm.reject();
       });

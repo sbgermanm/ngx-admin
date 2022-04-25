@@ -51,6 +51,18 @@ export class SmartTableService extends SmartTableData {
       //   catchError(this.handleError<any>('saveFoos', this.response)),
       // );
   }
+
+
+
+  deleteFoos(event: any): Observable<any> {
+    this.log('deleting: ' + event);
+    return this.http.delete(`${this.url}`, event);
+      // .pipe(
+      //   tap(_ => this.log('saved foos')),
+      //   catchError(this.handleError<any>('saveFoos', this.response)),
+      // );
+  }
+
  /**
    * Handle Http operation that failed.
    * Let the app continue.
