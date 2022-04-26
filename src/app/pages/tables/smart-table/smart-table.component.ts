@@ -58,8 +58,12 @@ export class SmartTableComponent implements OnInit {
   source: LocalDataSource = new LocalDataSource();
 
   data = [{
-        id: 1,
-        name: 'Mark'}];
+    id: 1,
+    firstName: 'Mark',
+    lastName: "pepe",
+    phone: "123",
+    email: "123"
+  }];
 
   constructor(private service: SmartTableData) {
   }
@@ -90,7 +94,7 @@ export class SmartTableComponent implements OnInit {
       this.service.postFoos(event.newData).subscribe(
         response => {
         this.log('response: ' + response);
-        event.confirm.resolve();
+        event.confirm.resolve(response);
 
       },
       error => {

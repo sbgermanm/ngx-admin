@@ -58,8 +58,12 @@ export class SmartTableComponent implements OnInit {
   source: LocalDataSource = new LocalDataSource();
 
   data = [{
-        id: 1,
-        name: 'Mark'}];
+    id: 1,
+    firstName: 'Mark',
+    lastName: "pepe",
+    phone: "123",
+    email: "123"
+  }];
 
   constructor(private service: SmartTableData) {
   }

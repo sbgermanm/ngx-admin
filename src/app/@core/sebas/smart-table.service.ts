@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
 import { Response } from './response';
-import { Foo } from './foo';
+import { Foo } from '../data/foo';
 import { catchError, map, tap } from 'rxjs/operators';
 
 
@@ -20,7 +20,11 @@ export class SmartTableService extends SmartTableData {
   getData() {
     const data = [{
           id: 1,
-          name: 'Mark'}];
+          firstName: 'Mark',
+          lastName: "pepe",
+          phone: "123",
+          email: "123"
+        }];
     return data;
   }
 
@@ -43,9 +47,9 @@ export class SmartTableService extends SmartTableData {
   }
 
 
-  postFoos(data: Object): Observable<any> {
+  postFoos(data: Object): Observable<Foo> {
     this.log('saving: ' + data);
-    return this.http.post(`${this.url}`, data);
+    return this.http.post<Foo>(`${this.url}`, data);
       // .pipe(
       //   tap(_ => this.log('saved foos')),
       //   catchError(this.handleError<any>('saveFoos', this.response)),

@@ -1,4 +1,4 @@
-import { Foo } from './foo';
+import { Foo } from '../data/foo';
 
 export interface Response {
   fooList: Foo[];
