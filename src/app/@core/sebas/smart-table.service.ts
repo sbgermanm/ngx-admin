@@ -21,9 +21,9 @@ export class SmartTableService extends SmartTableData {
     const data = [{
           id: 1,
           firstName: 'Mark',
-          lastName: "pepe",
-          phone: "123",
-          email: "123"
+          lastName: 'pepe',
+          phone: '123',
+          email: '123',
         }];
     return data;
   }
@@ -56,6 +56,11 @@ export class SmartTableService extends SmartTableData {
       // );
   }
 
+
+  putFoos(data: Foo): Observable<Foo> {
+    this.log('saving: ' + data);
+    return this.http.put<Foo>(`${this.url}` + "/" + data.id, data);
+  }
 
 
   deleteFoos(event: any): Observable<any> {

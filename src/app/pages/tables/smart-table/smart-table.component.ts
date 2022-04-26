@@ -60,9 +60,9 @@ export class SmartTableComponent implements OnInit {
   data = [{
     id: 1,
     firstName: 'Mark',
-    lastName: "pepe",
-    phone: "123",
-    email: "123"
+    lastName: 'pepe',
+    phone: '123',
+    email: '123',
   }];
 
   constructor(private service: SmartTableData) {
@@ -70,19 +70,18 @@ export class SmartTableComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.getFoos().subscribe(resp => {
-              this.data = resp.fooList;
-              this.source.load(this.data);
-          },
-          error => {
-            window.confirm('Error on loading foos');
-          }
-    );
+      this.data = resp.fooList;
+      this.source.load(this.data);
+    },
+      error => {
+        window.confirm('Error on loading foos');
+      });
   }
 
 
   onDeleteConfirm(event): void {
     if (window.confirm('Are you sure you want to delete?')) {
-      this.service.deleteFoos(event)
+      this.service.deleteFoos(event);
       event.confirm.resolve();
     } else {
       event.confirm.reject();
@@ -93,30 +92,39 @@ export class SmartTableComponent implements OnInit {
     if (window.confirm('Are you sure you want to create?')) {
       this.service.postFoos(event.newData).subscribe(
         response => {
-        this.log('response: ' + response);
-        event.confirm.resolve(response);
+          this.log('response: ' + response);
+          event.confirm.resolve(response);
 
-      },
-      error => {
-        window.confirm('Error saving foos');
-        this.log('error: ' + error);
-        event.confirm.reject();
-      });
+        },
+        error => {
+          window.confirm('Error saving foos');
+          this.log('error: ' + error);
+          event.confirm.reject();
+        });
     } else {
       event.confirm.reject();
     }
   }
 
   onSaveConfirm(event): void {
-    if (window.confirm('Are you sure you want to save?')) {
-      event.confirm.resolve();
+    if (window.confirm('Are you sure you want to update?')) {
+      this.service.putFoos(event.newData).subscribe(
+        response => {
+          this.log('response: ' + response);
+          event.confirm.resolve(response);
+        },
+        error => {
+          window.confirm('Error saving foos');
+          this.log('error: ' + error);
+          event.confirm.reject();
+        });
     } else {
       event.confirm.reject();
     }
   }
 
-    /** Log a HeroService message with the MessageService */
-    private log(message: string) {
-          // console.log(message); // log to console instead
-    }
+  /** Log a HeroService message with the MessageService */
+  private log(message: string) {
+    // console.log(message); // log to console instead
+  }
 }

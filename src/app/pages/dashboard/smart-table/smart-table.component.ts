@@ -60,9 +60,9 @@ export class SmartTableComponent implements OnInit {
   data = [{
     id: 1,
     firstName: 'Mark',
-    lastName: "pepe",
-    phone: "123",
-    email: "123"
+    lastName: 'pepe',
+    phone: '123',
+    email: '123',
   }];
 
   constructor(private service: SmartTableData) {
