@@ -59,7 +59,7 @@ export class SmartTableService extends SmartTableData {
 
   putFoos(data: Foo): Observable<Foo> {
     this.log('saving: ' + data);
-    return this.http.put<Foo>(`${this.url}` + "/" + data.id, data);
+    return this.http.put<Foo>(`${this.url}` + '/' + data.id, data);
   }
 
 
